@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днём Рождения, Нигина 🌸</title>
+<style>
+  :root{
+    --blush: #fbeaf0;
+    --rose: #f6c9d6;
+    --rose-deep: #e8a3b9;
+    --gold: #d9a86c;
+    --cream: #fdf6f0;
+    --ink: #5a3e44;
+    --ink-soft: #8a6b72;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Marcellus', 'Cormorant Garamond', serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Marcellus&display=swap');
+
+  *{margin:0; padding:0; box-sizing:border-box;}
+
+  html, body{
+    background: linear-gradient(180deg, var(--cream) 0%, var(--blush) 50%, #fbf2f5 100%);
+    color: var(--ink);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* ===== Petal animation ===== */
+  .petals{
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    pointer-events:none;
+    z-index: 999;
+    overflow:hidden;
+  }
+  .petal{
+    position:absolute;
+    top:-10%;
+    will-change: transform, opacity;
+    opacity:.85;
+    animation: fall linear infinite;
+  }
+  .petal svg{ display:block; }
+
+  @keyframes fall{
+    0%{ transform: translate(0,-10vh) rotate(0deg); opacity:0; }
+    8%{ opacity:.85; }
+    100%{ transform: translate(var(--drift,40px), 110vh) rotate(360deg); opacity:.2; }
+  }
+
+  /* ===== Header / Hero ===== */
+  .hero{
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 6vh 6vw;
+    position:relative;
+  }
+
+  .eyebrow{
+    font-family: var(--font-display);
+    font-style: italic;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    font-size: clamp(.65rem, 1.4vw, .9rem);
+    color: var(--rose-deep);
+    margin-bottom: 1.4rem;
+  }
+
+  .name{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(3.2rem, 13vw, 8.5rem);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: .02em;
+    background: linear-gradient(120deg, var(--rose-deep), var(--gold) 60%, var(--rose-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+  }
+
+  .headline{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 4.5vw, 3rem);
+    margin-top: 1.6rem;
+    color: var(--ink);
+  }
+
+  .subline{
+    margin-top: 1rem;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--ink-soft);
+    letter-spacing: .04em;
+  }
+
+  .divider{
+    width: 60px;
+    height: 1px;
+    background: var(--rose-deep);
+    margin: 2.4rem auto;
+    position:relative;
+  }
+  .divider::after{
+    content: '✦';
+    position:absolute;
+    top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    background: var(--cream);
+    color: var(--rose-deep);
+    padding: 0 .6rem;
+    font-size: .9rem;
+  }
+
+  .scroll-hint{
+    position:absolute;
+    bottom: 5vh;
+    left:50%;
+    transform: translateX(-50%);
+    font-size: .75rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity:.6;
+    animation: bob 2.6s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translate(-50%,0); }
+    50%{ transform: translate(-50%,8px); }
+  }
+
+  /* ===== Message section ===== */
+  .message-section{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 14vh 6vw 18vh;
+    text-align:center;
+  }
+
+  .message-section .label{
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--rose-deep);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-size: .8rem;
+    margin-bottom: 2rem;
+  }
+
+  .message{
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3.2vw, 2.1rem);
+    line-height: 1.75;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .message .salutation{
+    display:block;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-style: italic;
+    margin-bottom: 1.6rem;
+    color: var(--rose-deep);
+  }
+
+  .signature{
+    margin-top: 3rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+  }
+
+  /* ===== Wishes ===== */
+  .wishes{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 6vh 6vw 16vh;
+    text-align:center;
+  }
+  .wishes .label{
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--rose-deep);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-size: .8rem;
+    margin-bottom: 3rem;
+  }
+  .wishes-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+  }
+  .wish-card{
+    padding: 2.4rem 1.6rem;
+    border: 1px solid rgba(232,163,185,.35);
+    border-radius: 2px;
+    background: rgba(255,255,255,.45);
+    backdrop-filter: blur(2px);
+    transition: transform .4s ease, box-shadow .4s ease;
+  }
+  .wish-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px -20px rgba(232,163,185,.6);
+  }
+  .wish-card .icon{
+    font-size: 1.8rem;
+    color: var(--rose-deep);
+    margin-bottom: 1.2rem;
+    display:block;
+  }
+  .wish-card h3{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-bottom: .7rem;
+    color: var(--ink);
+  }
+  .wish-card p{
+    font-size: .95rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ===== Music surprise ===== */
+  .surprise{
+    text-align:center;
+    padding: 4vh 6vw 18vh;
+  }
+  .surprise .label{
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--rose-deep);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-size: .8rem;
+    margin-bottom: 1.6rem;
+  }
+  .music-btn{
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: .08em;
+    color: var(--cream);
+    background: linear-gradient(120deg, var(--rose-deep), var(--gold));
+    border: none;
+    padding: 1.1rem 2.8rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease;
+    box-shadow: 0 10px 30px -12px rgba(232,163,185,.7);
+  }
+  .music-btn:hover{
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 36px -12px rgba(232,163,185,.85);
+  }
+  .music-btn:active{ transform: translateY(0) scale(.99); }
+  .music-note{
+    margin-top: 1.2rem;
+    font-size: .85rem;
+    color: var(--ink-soft);
+    opacity:.8;
+  }
+
+  .spotify-wrap{
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    text-align:center;
+    padding: 4vh 6vw 6vh;
+    font-size: .8rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity:.55;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .petal, .scroll-hint{ animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="eyebrow">С Днём Рождения</div>
+  <h1 class="name">Нигина</h1>
+  <p class="headline">Пусть этот день будет наполнен теплом и улыбками</p>
+  <p class="subline">Сегодня — особенный день, созданный для вас</p>
+  <div class="divider" aria-hidden="true"></div>
+  <div class="scroll-hint">Прокрутите вниз ↓</div>
+</section>
+
+<section class="message-section">
+  <div class="label">Личное послание</div>
+  <p class="message">
+    <span class="salutation">Дорогая Нигина,</span>
+    Поздравляю с днём рождения. Желаю всего наилучшего и счастья. Хочу выразить вам безмерную благодарность за всё, что вы делали до сих пор.
+  </p>
+  <p class="signature">С любовью, ваша сестра</p>
+</section>
+
+<section class="wishes">
+  <div class="label">Пожелания для вас</div>
+  <div class="wishes-grid">
+    <div class="wish-card">
+      <span class="icon">✦</span>
+      <h3>Счастья</h3>
+      <p>Пусть каждый день приносит маленькие радости и поводы для улыбки.</p>
+    </div>
+    <div class="wish-card">
+      <span class="icon">❀</span>
+      <h3>Здоровья</h3>
+      <p>Пусть силы и бодрость всегда будут с вами, на долгие годы.</p>
+    </div>
+    <div class="wish-card">
+      <span class="icon">✦</span>
+      <h3>Исполнения мечт</h3>
+      <p>Пусть всё задуманное сбывается легко и в самый нужный момент.</p>
+    </div>
+    <div class="wish-card">
+      <span class="icon">❀</span>
+      <h3>Любви и тепла</h3>
+      <p>Пусть рядом всегда будут близкие люди, готовые поддержать.</p>
+    </div>
+  </div>
+</section>
+
+<section class="surprise">
+  <div class="label">Маленький сюрприз</div>
+  <p class="music-note" style="margin-bottom:1.6rem;">Песня для вас ♪</p>
+  <div class="spotify-wrap">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2pW5kNCx133MWWirxegvng?utm_source=generator&theme=0"
+      width="100%" height="152" frameBorder="0" allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<footer>С любовью создано для Нигины</footer>
+
+<script>
+  // ===== Falling petals =====
+  const petalContainer = document.getElementById('petals');
+  const petalCount = 22;
+  const colors = ['#f6c9d6', '#fbeaf0', '#e8a3b9', '#fcd9e4'];
+
+  function makePetal(){
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+
+    const size = 10 + Math.random() * 14;
+    const left = Math.random() * 100;
+    const duration = 9 + Math.random() * 10;
+    const delay = Math.random() * 14;
+    const drift = (Math.random() - 0.5) * 200;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    petal.style.left = left + 'vw';
+    petal.style.width = size + 'px';
+    petal.style.height = size + 'px';
+    petal.style.animationDuration = duration + 's';
+    petal.style.animationDelay = '-' + delay + 's';
+    petal.style.setProperty('--drift', drift + 'px');
+
+    petal.innerHTML = `<svg viewBox="0 0 32 32" width="${size}" height="${size}">
+      <path d="M16 2 C22 8, 30 12, 16 16 C2 12, 10 8, 16 2 Z" fill="${color}"/>
+    </svg>`;
+
+    petalContainer.appendChild(petal);
+  }
+
+  for(let i=0;i<petalCount;i++){ makePetal(); }
+
+  // ===== Music: handled via Spotify embed above =====
+</script>
+
+</body>
+</html>
